@@ -1,0 +1,17 @@
+[
+    {
+        "ip": 121,
+        "alias": "Device #1",
+        "os": "BOS+"
+    },
+    {
+        "ip": 122,
+        "alias": "Device #2",
+        "os": "BOS+"
+    },
+    {
+        "ip": 141,
+        "alias": "Device #3",
+        "os": "BOS"
+    }
+]

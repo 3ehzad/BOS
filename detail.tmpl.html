@@ -1,0 +1,55 @@
+<md-dialog aria-label="Device Detail">
+        <md-toolbar class="md-hue-1">
+            <div class="md-toolbar-tools">
+                    <md-button class="md-icon-button" ng-click="hide()">
+                            <md-icon>close</md-icon>
+                        </md-button>
+                <h2>IP: {{device.ip}}</h2>
+            </div>
+        </md-toolbar>
+        <md-dialog-content>
+                <div>
+                        <md-list>
+                                <md-list-item class="md-2-line">
+                                    <md-icon class="md-accent">toys</md-icon>
+                                    <div class="md-list-item-text">
+                                        <h3> {{ fan1 }} </h3>
+                                        <p> Fan1 Speed </p>
+                                    </div>
+                                    <div class="md-list-item-text second">
+                                        <h3> {{ fan2 }} </h3>
+                                        <p> Fan2 Speed </p>
+                                    </div>
+                                    <md-icon class="md-accent secondico">toys</md-icon>
+                                </md-list-item>
+                                <md-divider></md-divider>
+                                <md-list-item class="md-2-line">
+                                    <md-icon class="md-accent">wb_sunny</md-icon>
+                                    <div class="md-list-item-text">
+                                        <h3> {{ temp1 }}&#176</h3>
+                                        <p> Temp1 </p>
+                                    </div>
+                                    <div class="md-list-item-text second">
+                                        <h3> {{ temp2 }}&#176</h3>
+                                        <p> Temp2 </p>
+                                    </div>
+                                    <md-icon class="md-accent secondico">wb_sunny</md-icon>
+                                </md-list-item>
+                                <md-divider></md-divider>
+                                <md-list-item class="md-2-line">
+                                    <md-icon class="md-accent">nfc</md-icon>
+                                    <div class="md-list-item-text">
+                                        <h3> {{ th5 }} Th/s</h3>
+                                        <p>TH 5s </p>
+                                    </div>
+                                    <div class="md-list-item-text second">
+                                        <h3> {{ thav }} Th/s</h3>
+                                        <p> TH Average </p>
+                                    </div>
+                                    <md-icon class="md-accent secondico">nfc</md-icon>
+                                </md-list-item>
+                                <md-divider></md-divider>
+                            </md-list>
+                </div>
+        </md-dialog-content>
+</md-dialog>
