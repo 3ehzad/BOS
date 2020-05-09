@@ -1,17 +1,242 @@
 [
     {
+        "ip": 101,
+        "relay": "01",
+        "alias": "R",
+        "os": "COB"
+    },
+    {
+        "ip": 102,
+        "relay": "02",
+        "alias": "R",
+        "os": "COB"
+    },
+    {
+        "ip": 103,
+        "relay": "03",
+        "alias": "R",
+        "os": "COB"
+    },
+    {
+        "ip": 104,
+        "relay": "04",
+        "alias": "R",
+        "os": "COB"
+    },
+    {
+        "ip": 105,
+        "relay": "05",
+        "alias": "R",
+        "os": "COB"
+    },
+    {
+        "ip": 106,
+        "relay": "06",
+        "alias": "R",
+        "os": "COB"
+    },
+    {
+        "ip": 107,
+        "relay": "07",
+        "alias": "R",
+        "os": "COB"
+    },
+    {
+        "ip": 108,
+        "relay": "08",
+        "alias": "R",
+        "os": "COB"
+    },
+    {
+        "ip": 109,
+        "relay": "09",
+        "alias": "R",
+        "os": "COB"
+    },
+    {
+        "ip": 136,
+        "relay": "36",
+        "alias": "R",
+        "os": "ANT"
+    },
+    {
+        "ip": 110,
+        "relay": "10",
+        "alias": "B",
+        "os": "COB"
+    },
+    {
+        "ip": 111,
+        "relay": "11",
+        "alias": "B",
+        "os": "COB"
+    },
+    {
+        "ip": 112,
+        "relay": "12",
+        "alias": "B",
+        "os": "COB"
+    },
+    {
         "ip": 121,
-        "alias": "Device #1",
+        "relay": "21",
+        "alias": "B",
         "os": "BOS+"
     },
     {
         "ip": 122,
-        "alias": "Device #2",
+        "relay": "22",
+        "alias": "B",
         "os": "BOS+"
     },
     {
+        "ip": 140,
+        "relay": "19",
+        "alias": "B",
+        "os": "COB"
+    },
+    {
         "ip": 141,
-        "alias": "Device #3",
-        "os": "BOS"
+        "relay": "20",
+        "alias": "B",
+        "os": "BOS+"
+    },
+    {
+        "ip": 132,
+        "relay": "40",
+        "alias": "BV",
+        "os": "COB"
+    },
+    {
+        "ip": 113,
+        "relay": "13",
+        "alias": "V",
+        "os": "COB"
+    },
+    {
+        "ip": 114,
+        "relay": "14",
+        "alias": "V",
+        "os": "COB"
+    },
+    {
+        "ip": 115,
+        "relay": "15",
+        "alias": "V",
+        "os": "COB"
+    },
+    {
+        "ip": 116,
+        "relay": "16",
+        "alias": "V",
+        "os": "COB"
+    },
+    {
+        "ip": 125,
+        "relay": "17",
+        "alias": "V",
+        "os": "COB"
+    },
+    {
+        "ip": 126,
+        "relay": "18",
+        "alias": "V",
+        "os": "COB"
+    },
+    {
+        "ip": 129,
+        "relay": "25",
+        "alias": "H",
+        "os": "AVL"
+    },
+    {
+        "ip": 129,
+        "relay": "26",
+        "alias": "H",
+        "os": "AVL"
+    },
+    {
+        "ip": 129,
+        "relay": "27",
+        "alias": "H",
+        "os": "AVL"
+    },
+    {
+        "ip": 129,
+        "relay": "28",
+        "alias": "H",
+        "os": "AVL"
+    },
+    {
+        "ip": 129,
+        "relay": "29",
+        "alias": "H",
+        "os": "AVL"
+    },
+    {
+        "ip": 130,
+        "relay": "30",
+        "alias": "H",
+        "os": "COB"
+    },
+    {
+        "ip": 131,
+        "relay": "31",
+        "alias": "H",
+        "os": "COB"
+    },
+    {
+        "ip": 133,
+        "relay": "34",
+        "alias": "H",
+        "os": "ANT"
+    },
+    {
+        "ip": 134,
+        "relay": "33",
+        "alias": "H",
+        "os": "ANT"
+    },
+    {
+        "ip": 123,
+        "relay": "23",
+        "alias": "A",
+        "os": "COB"
+    },
+    {
+        "ip": 124,
+        "relay": "24",
+        "alias": "A",
+        "os": "COB"
+    },
+    {
+        "ip": 117,
+        "relay": "32",
+        "alias": "A",
+        "os": "ANT"
+    },
+    {
+        "ip": 143,
+        "relay": "Empty",
+        "alias": "A",
+        "os": "COB"
+    },
+    {
+        "ip": 142,
+        "relay": "41",
+        "alias": "A",
+        "os": "COB"
+    },
+    {
+        "ip": 144,
+        "relay": "47",
+        "alias": "A",
+        "os": "COB"
+    },
+    {
+        "ip": 135,
+        "relay": "35",
+        "alias": "Z",
+        "os": "ANT"
     }
 ]

@@ -1,0 +1,33 @@
+.isloading {
+    background-color: #fff;
+    height: 100%;
+    width: 100%;
+    z-index: 100;
+    position: fixed;
+    display: flex;
+    top: 56px;
+    left: 0;
+}
+.isloading md-progress-circular {
+    position: fixed;
+    top: 50%;
+}
+.on {
+    color: rgb(0, 233, 0) !important;
+}
+.off {
+    color: rgb(235, 0, 0) !important;
+}
+.md-success {
+    background-color: rgb(0, 165, 0) !important;
+    color: rgb(255, 255, 255) !important;
+}
+.md-success md-icon{
+    color: rgb(255, 255, 255) !important;
+}
+ md-toast.md-error-toast-theme .md-toast-content {
+    background-color:#ff0000;
+}
+md-toast.md-success-toast-theme .md-toast-content {
+    background-color:#00be30;
+}

@@ -6,18 +6,97 @@ angular.module('BOSapiclient', ['ngMaterial', 'ngMessages'])
     .run(['$rootScope', '$http', function ($rootScope, $http) {
         $http.get('config.json?_=' + Date.now(), { cache: false }).then(function (data) {
             $rootScope.config = data.data;
-            $rootScope.wsip = $rootScope.config[0].wsip;
-            $rootScope.usr = $rootScope.config[0].username;
-            $rootScope.pwd = $rootScope.config[0].password;
         });
     }])
-    .controller('deviceController', ['$scope', '$rootScope', '$http', '$mdDialog', function ($scope, $rootScope, $http, $mdDialog, ) {
+
+    .controller('panelController', ['$scope', '$rootScope', '$http', function ($scope, $rootScope, $http) {
+        $scope.psuStatus = function () {
+            $http.get($rootScope.config[0].arip + 'PSU_STATUS', { cache: false }).then(function (data) {
+                $scope.minerstatus = data.data;
+            });
+        }
+        // run commands
+        $scope.psuRUN = function () {
+            $http.get($rootScope.config[0].arip + 'MINER_RUN').then(function (response) {
+                $scope.psuresponse = response.data;
+            });
+        }
+        $scope.psuSTOP = function () {
+            $http.get($rootScope.config[0].arip + 'MINER_STOP').then(function (response) {
+                $scope.psuresponse = response.data;
+            });
+        }
+        // bug: command name check MINER_ON or MINERALL_ON
+        $scope.psuALLON = function () {
+            $http.get($rootScope.config[0].arip + 'MINERALL_ON').then(function (response) {
+                $scope.psuresponse = response.data;
+            });
+        }
+        $scope.psuALLOFF = function () {
+            $http.get($rootScope.config[0].arip + 'MINER_OFF').then(function (response) {
+                $scope.psuresponse = response.data;
+            });
+        }
+        // $scope.modemRESET = function () {
+        //     $http.get($rootScope.espip + 'MODEMRESET').then(function (response) {
+        //         $scope.modemresponse = response.data;
+        //     });
+        // }
+        // $scope.camOFF = function () {
+        //     $http.get($rootScope.espip + 'CAMOFF').then(function (response) {
+        //         $scope.camresponse = response.data;
+        //     });
+        // }
+        // $scope.camRESET = function () {
+        //     $http.get($rootScope.espip + 'CAMRESET').then(function (response) {
+        //         $scope.camresponse = response.data;
+        //     });
+        // }
+    }])
+
+    .controller('deviceController', ['$scope', '$rootScope', '$http', '$mdDialog', '$mdToast', '$window', function ($scope, $rootScope, $http, $mdDialog, $mdToast, $window) {
+        $scope.isLoading = true;
         $http.get('miners.json?_=' + Date.now(), { cache: false }).then(function (data) {
             $scope.miners = data.data;
-            console.log($scope.miners)
+            $scope.isLoading = false;
         });
+        //get relay status of per device
+        $scope.relayStatus = function () {
+            $http.get($rootScope.config[0].arip + 'RELAY_STATUS', { cache: false }).then(function (data) {
+                $rootScope.relaystatus = data.data;
+            });
+        }
+
+      $scope.relayON = function (relay) {
+        $http.get($rootScope.config[0].arip + 'RELAYON_' + relay).then(function (response) {
+          $scope.relayresponse = response.data;
+          //start toast
+          $mdToast.show(
+            $mdToast.simple()
+              .textContent("Miner is going to turn ON")
+              .position("top right")
+              .theme('succss-toast')
+              .hideDelay(5000)
+          );
+          // end toast
+        });
+      }
+      $scope.relayOFF = function (relay) {
+        $http.get($rootScope.config[0].arip + 'RELAYOFF_' + relay).then(function (response) {
+          $scope.psrelayresponseustatus = response.data;
+          //start toast
+          $mdToast.show(
+            $mdToast.simple()
+              .textContent("Miner is going to turn OFF")
+              .position("top right")
+              .theme('error-toast')
+              .hideDelay(5000)
+          );
+          // end toast
+
+        });
+      }
         /* start dialog */
-        $scope.status = '  ';
         $scope.fetchapi = function (ev, index) {
             $mdDialog.show({
                 locals: { dataToPass: $scope.miners[index] },
@@ -38,32 +117,25 @@ angular.module('BOSapiclient', ['ngMaterial', 'ngMessages'])
             };
 
             //fetch api from device
+            if ($scope.device.os == "COB") {
             $http({
                 method: 'GET',
-                url: $rootScope.wsip + $scope.device.ip + '/cgi-bin/luci/admin/miner/api_status/',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Access-Control-Allow-Credentials': true,
-                    'Authorization': 'Basic cm9vdDpBZGUxMDEw'
-                },
-                xhrFields: {
-                    // The 'xhrFields' property sets additional fields on the XMLHttpRequest.
-                    // This can be used to set the 'withCredentials' property.
-                    // Set the value to 'true' if you'd like to pass cookies to the server.
-                    // If this is enabled, your server must respond with the header
-                    // 'Access-Control-Allow-Credentials: true'.
-                    withCredentials: false
-                },
+                url: $rootScope.config[0].wsip + $scope.device.ip + ':4028/stats'
             }).then(function (data) {
-                $scope.status = data.data;
-                console.log($scope.status)
-                //   $scope.fan1 = $scope.stats.STATS[1].fan1;
-                //   $scope.fan2 = $scope.stats.STATS[1].fan2;
-                //   $scope.temp1 = Math.max($scope.stats.STATS[1].temp3_1, $scope.stats.STATS[1].temp3_2, $scope.stats.STATS[1].temp3_3)
-                //   $scope.temp2 = Math.max($scope.stats.STATS[1].temp2_1, $scope.stats.STATS[1].temp2_2, $scope.stats.STATS[1].temp2_3);
-
-                // $scope.th5 = Number($scope.stats.STATS[1]["GHS 5s"] / 1000).toFixed(2);
-                // $scope.thav = Number($scope.stats.STATS[1]["GHS av"] / 1000).toFixed(2);
+                $scope.stats = data.data;
+                $scope.temp1 = Math.max($scope.stats.STATS[1].temp6, $scope.stats.STATS[1].temp7, $scope.stats.STATS[1].temp8)
+                $scope.temp2 = Math.max($scope.stats.STATS[1].temp2_6, $scope.stats.STATS[1].temp2_7, $scope.stats.STATS[1].temp2_8);
+                $scope.th5 = Number($scope.stats.STATS[1]["GHS 5s"] / 1000).toFixed(2);
+                $scope.thav = Number($scope.stats.STATS[1]["GHS av"] / 1000).toFixed(2);
             });
+        } else {
+            $scope.develop = "Under Develop!"
         }
+
+            //open device management page
+            $scope.manage = function (ip) {
+                $window.open($rootScope.config[0].wsip + ip, '_blank');
+            };
+        }
+
     }])

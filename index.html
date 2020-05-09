@@ -15,31 +15,83 @@
 </head>
 
 <body ng-app="BOSapiclient">
-    <md-toolbar layout="row" layout-align="space-between none">
+    <md-toolbar layout="row" layout-align="space-around center" layout-padding>
         <div class="md-toolbar-tools">
-            <h2 layout="row">BOS/BOS+ API Client</h2>
+            <h2 layout="row">BOS API Client</h2>
         </div>
+        <md-switch ng-model="Emergency">SOS</md-switch>
     </md-toolbar>
     <div ng-controller="deviceController">
+        <div class="isloading" ng-show="isLoading" layout="row" layout-align="center center">
+            <md-progress-circular md-mode="determinate"></md-progress-circular>
+          </div>
         <md-subheader>
             <p class="md-body-2" layout-margin>
-              <md-input-container class="md-icon-float md-block">
-                  <label>Search</label>
-                  <md-icon>search</md-icon>
-                  <input ng-model='searchText' type="text">
-              </md-input-container>
-          </p>
+                <md-input-container class="md-icon-float md-block">
+                    <label>Search</label>
+                    <md-icon>search</md-icon>
+                    <input ng-model='searchText' type="text">
+                </md-input-container>
+            </p>
         </md-subheader>
+        <md-card ng-controller="panelController">
+            <md-card-title>
+                <md-card-title-text>
+                    <div class="md-headline">
+                            <md-icon class="md-secondary" ng-if="minerstatus.psu == null">offline_bolt</md-icon>
+                            <md-icon class="on" ng-if="minerstatus.psu =='ON'">offline_bolt</md-icon>
+                            <md-icon class="off" ng-if="minerstatus.psu =='OFF'">offline_bolt</md-icon>
+                     Status / <span class="md-body-1"> IN: {{minerstatus.temp_in}} &#176</span>
+                        <span class="md-body-1">OUT: {{minerstatus.temp_out}} &#176</span>
+                    </div>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content layout="column">
+                <md-card-actions layout="row" layout-align="center center">
+                    <md-button class="md-raised md-primary" ng-click="psuStatus()">
+                        <md-icon>network_check</md-icon> Check
+                    </md-button>
+                    <md-button class="md-raised md-success" ng-click="psuRUN()" ng-if="!Emergency">
+                        <md-tooltip md-direction="top">Latest Status ON</md-tooltip>
+                        <md-icon>power_settings_new</md-icon> RUN
+                    </md-button>
+                    <md-button class="md-raised md-accent" ng-click="psuSTOP()" ng-if="!Emergency">
+                        <md-tooltip md-direction="top">Latest Status OFF</md-tooltip>
+                        <md-icon>power_settings_new</md-icon> STOP
+                    </md-button>
+                    <md-button class="md-raised md-warn" ng-click="psuALLON()" ng-if="Emergency">
+                        <md-icon>offline_bolt</md-icon> ALL ON!
+                    </md-button>
+                    <md-button class="md-raised md-warn" ng-click="psuALLOFF()" ng-if="Emergency">
+                        <md-icon>offline_bolt</md-icon> ALL OFF!
+                    </md-button>
+                </md-card-actions>
+            </md-card-content>
+        </md-card>
+        <div layout="row" layout-align="center center">
+        <md-button class="md-raised md-primary md-block" ng-click="relayStatus()">
+            <md-icon>network_check</md-icon> Check All Devices
+        </md-button>
+        </div>
         <md-list>
-        <md-list-item ng-repeat="item in miners | filter:searchText " ng-click="fetchapi($event, $index)" class="noright">
-            <img src="assets/plus.png" class="md-avatar" ng-if="item.os == 'BOS+'" />
-            <img src="assets/community.png" class="md-avatar" ng-if="item.os == 'BOS'" />
-            <p>{{ item.alias }}</p>
-            <md-icon class="md-secondary md-primary" ng-click="hashrate($index, $event)" aria-label="Hashrates">memory</md-icon>
-            <md-icon class="md-secondary md-accent" ng-click="tunning($index, $event)" aria-label="Auto-tuning">speed</md-icon>
-            <md-icon class="md-secondary" ng-click="manage($index, $event)" aria-label="Manage Device">settings</md-icon>
-            <md-divider></md-divider>
-          </md-list-item>
+            <md-list-item ng-repeat="item in miners | filter:searchText " ng-click="fetchapi($event, $index)"
+                class="noright">
+                <img src="assets/plus.png" class="md-avatar" ng-if="item.os == 'BOS+'" />
+                <img src="assets/community.png" class="md-avatar" ng-if="item.os == 'BOS'" />
+                <img src="assets/cobalt.png" class="md-avatar" ng-if="item.os == 'COB'" />
+                <img src="assets/antminer.png" class="md-avatar" ng-if="item.os == 'ANT'" />
+                <img src="assets/avalon.png" class="md-avatar" ng-if="item.os == 'AVL'" />
+                <p>{{item.alias}}: {{item.ip}}</p><md-icon ng-class="relaystatus.relay_{{item.relay}}">offline_bolt</md-icon>
+                <md-icon class="md-secondary" ng-click="showdetail = !showdetail" aria-label="Manage Device">settings
+                </md-icon>
+                <md-button class="md-fab md-mini md-success" ng-click="relayON(item.relay)" ng-if="showdetail">
+                    <md-icon aria-label="On">power_settings_new</md-icon>
+                </md-button>
+                <md-button class="md-fab md-mini md-accent" ng-click="relayOFF(item.relay)" ng-if="showdetail">
+                    <md-icon aria-label="Off">power_settings_new</md-icon>
+                </md-button>
+                <md-divider></md-divider>
+            </md-list-item>
         </md-list>
     </div>
     <!-- AngularJS Material Dependencies -->
