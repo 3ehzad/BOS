@@ -68,9 +68,12 @@
                 </md-card-actions>
             </md-card-content>
         </md-card>
-        <div layout="row" layout-align="end center">
-        <md-button class="md-raised md-primary md-block" ng-click="relayStatus()">
-            <md-icon>network_check</md-icon> Check Devices
+        <div layout="row" layout-align="center center">
+        <!-- <md-button class="md-raised md-warn md-hue-2" ng-click="tempStatus()">
+            <md-icon>flare</md-icon> Check Temprature
+        </md-button> -->
+        <md-button class="md-raised md-primary md-hue-2" ng-click="relayStatus()">
+            <md-icon>offline_bolt</md-icon> Check Powers
         </md-button>
         </div>
         <md-list>
@@ -81,7 +84,7 @@
                 <img src="assets/cobalt.png" class="md-avatar" ng-if="item.os == 'COB'" />
                 <img src="assets/antminer.png" class="md-avatar" ng-if="item.os == 'ANT'" />
                 <img src="assets/avalon.png" class="md-avatar" ng-if="item.os == 'AVL'" />
-                <p>{{item.alias}}: {{item.ip}}</p><md-icon ng-class="relaystatus.relay_{{item.relay}}">offline_bolt</md-icon>
+                <p>{{item.alias}}: {{item.ip}}</p>{{temp}} &#176<md-icon ng-class="relaystatus.relay_{{item.relay}}">offline_bolt</md-icon>
                 <md-icon class="md-secondary" ng-click="showdetail = !showdetail" aria-label="Manage Device">settings
                 </md-icon>
                 <md-button class="md-fab md-mini md-success" ng-click="relayON(item.relay)" ng-if="showdetail">

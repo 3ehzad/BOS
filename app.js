@@ -58,6 +58,7 @@ angular.module('BOSapiclient', ['ngMaterial', 'ngMessages'])
         $scope.isLoading = true;
         $http.get('miners.json?_=' + Date.now(), { cache: false }).then(function (data) {
             $scope.miners = data.data;
+            console.log($scope.miners);
             $scope.isLoading = false;
         });
         //get relay status of per device
@@ -66,36 +67,54 @@ angular.module('BOSapiclient', ['ngMaterial', 'ngMessages'])
                 $rootScope.relaystatus = data.data;
             });
         }
+        // get temp
+        // $scope.tempStatus = function () {
+        //     $scope.temp = [];
+        //     for (var i = 0; i < $scope.miners.length; i++) {
+        //         if ($scope.miners[i].os == "COB") {
+        //             $http({
+        //                 method: 'GET',
+        //                 url: $rootScope.config[0].wsip + $scope.miners[i].ip + ':4028/stats'
+        //             }).then(function (data) {
+        //                 $scope.stats = data.data;
+                        
+        //             });
+        //         } else {
+        //             $scope.temp.push("No API")
+        //         }
+        //         console.log($scope.temp)
+        //         $scope.temp.push(Math.max($scope.stats.STATS[1].temp2_6, $scope.stats.STATS[1].temp2_7, $scope.stats.STATS[1].temp2_8))
+        //     }
+        // }
+        $scope.relayON = function (relay) {
+            $http.get($rootScope.config[0].arip + 'RELAYON_' + relay).then(function (response) {
+                $scope.relayresponse = response.data;
+                //start toast
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent("Miner is going to turn ON")
+                        .position("top right")
+                        .theme('succss-toast')
+                        .hideDelay(5000)
+                );
+                // end toast
+            });
+        }
+        $scope.relayOFF = function (relay) {
+            $http.get($rootScope.config[0].arip + 'RELAYOFF_' + relay).then(function (response) {
+                $scope.psrelayresponseustatus = response.data;
+                //start toast
+                $mdToast.show(
+                    $mdToast.simple()
+                        .textContent("Miner is going to turn OFF")
+                        .position("top right")
+                        .theme('error-toast')
+                        .hideDelay(5000)
+                );
+                // end toast
 
-      $scope.relayON = function (relay) {
-        $http.get($rootScope.config[0].arip + 'RELAYON_' + relay).then(function (response) {
-          $scope.relayresponse = response.data;
-          //start toast
-          $mdToast.show(
-            $mdToast.simple()
-              .textContent("Miner is going to turn ON")
-              .position("top right")
-              .theme('succss-toast')
-              .hideDelay(5000)
-          );
-          // end toast
-        });
-      }
-      $scope.relayOFF = function (relay) {
-        $http.get($rootScope.config[0].arip + 'RELAYOFF_' + relay).then(function (response) {
-          $scope.psrelayresponseustatus = response.data;
-          //start toast
-          $mdToast.show(
-            $mdToast.simple()
-              .textContent("Miner is going to turn OFF")
-              .position("top right")
-              .theme('error-toast')
-              .hideDelay(5000)
-          );
-          // end toast
-
-        });
-      }
+            });
+        }
         /* start dialog */
         $scope.fetchapi = function (ev, index) {
             $mdDialog.show({
@@ -111,26 +130,25 @@ angular.module('BOSapiclient', ['ngMaterial', 'ngMessages'])
         };
         function devController($scope, $mdDialog, dataToPass) {
             $scope.device = dataToPass;
-            console.log($scope.device)
             $scope.hide = function () {
                 $mdDialog.hide();
             };
 
             //fetch api from device
             if ($scope.device.os == "COB") {
-            $http({
-                method: 'GET',
-                url: $rootScope.config[0].wsip + $scope.device.ip + ':4028/stats'
-            }).then(function (data) {
-                $scope.stats = data.data;
-                $scope.temp1 = Math.max($scope.stats.STATS[1].temp6, $scope.stats.STATS[1].temp7, $scope.stats.STATS[1].temp8)
-                $scope.temp2 = Math.max($scope.stats.STATS[1].temp2_6, $scope.stats.STATS[1].temp2_7, $scope.stats.STATS[1].temp2_8);
-                $scope.th5 = Number($scope.stats.STATS[1]["GHS 5s"] / 1000).toFixed(2);
-                $scope.thav = Number($scope.stats.STATS[1]["GHS av"] / 1000).toFixed(2);
-            });
-        } else {
-            $scope.develop = "Under Develop!"
-        }
+                $http({
+                    method: 'GET',
+                    url: $rootScope.config[0].wsip + $scope.device.ip + ':4028/stats'
+                }).then(function (data) {
+                    $scope.stats = data.data;
+                    $scope.temp1 = Math.max($scope.stats.STATS[1].temp6, $scope.stats.STATS[1].temp7, $scope.stats.STATS[1].temp8)
+                    $scope.temp2 = Math.max($scope.stats.STATS[1].temp2_6, $scope.stats.STATS[1].temp2_7, $scope.stats.STATS[1].temp2_8);
+                    $scope.th5 = Number($scope.stats.STATS[1]["GHS 5s"] / 1000).toFixed(2);
+                    $scope.thav = Number($scope.stats.STATS[1]["GHS av"] / 1000).toFixed(2);
+                });
+            } else {
+                $scope.develop = "Under Develop!"
+            }
 
             //open device management page
             $scope.manage = function (ip) {
