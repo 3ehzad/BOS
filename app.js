@@ -58,7 +58,6 @@ angular.module('BOSapiclient', ['ngMaterial', 'ngMessages'])
         $scope.isLoading = true;
         $http.get('miners.json?_=' + Date.now(), { cache: false }).then(function (data) {
             $scope.miners = data.data;
-            console.log($scope.miners);
             $scope.isLoading = false;
         });
         //get relay status of per device
