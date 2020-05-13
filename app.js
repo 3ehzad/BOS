@@ -163,7 +163,7 @@ angular.module('BOSapiclient', ['ngMaterial', 'ngMessages'])
                     $scope.temp2 = Math.max($scope.stats.STATS[1].temp2_6, $scope.stats.STATS[1].temp2_7, $scope.stats.STATS[1].temp2_8);
                 });
             } else {
-                $scope.develop = "Under Develop!"
+                $scope.develop = "Not Support"
             }
 
             //open device management page
