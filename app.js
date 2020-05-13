@@ -134,21 +134,33 @@ angular.module('BOSapiclient', ['ngMaterial', 'ngMessages'])
             };
 
             //fetch api from device
-            if ($scope.device.os == "COB" || $scope.device.os == "ANT") {
+            if ($scope.device.os == "BOS+" || $scope.device.os == "BOS") {
                 $http({
                     method: 'GET',
-                    url: $rootScope.config[0].wsip + $scope.device.ip + ':4028/stats'
+                    url: $rootScope.config[0].wsip + $scope.device.ip + '/cgi-bin/luci/admin/miner/api_status',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
                 }).then(function (data) {
                     $scope.stats = data.data;
                     $scope.th5 = Number($scope.stats.STATS[1]["GHS 5s"] / 1000).toFixed(2);
                     $scope.thav = Number($scope.stats.STATS[1]["GHS av"] / 1000).toFixed(2);
-                    if ($scope.device.os == "COB") {
-                        $scope.temp1 = Math.max($scope.stats.STATS[1].temp6, $scope.stats.STATS[1].temp7, $scope.stats.STATS[1].temp8)
-                        $scope.temp2 = Math.max($scope.stats.STATS[1].temp2_6, $scope.stats.STATS[1].temp2_7, $scope.stats.STATS[1].temp2_8);
-                    } else if ($scope.device.os == "ANT") {
-                        $scope.temp1 = Math.max($scope.stats.STATS[1].temp3_1, $scope.stats.STATS[1].temp3_2, $scope.stats.STATS[1].temp3_3)
-                        $scope.temp2 = Math.max($scope.stats.STATS[1].temp2_1, $scope.stats.STATS[1].temp2_2, $scope.stats.STATS[1].temp2_3);
+                    $scope.temp1 = Math.max($scope.stats.STATS[1].temp6, $scope.stats.STATS[1].temp7, $scope.stats.STATS[1].temp8)
+                    $scope.temp2 = Math.max($scope.stats.STATS[1].temp2_6, $scope.stats.STATS[1].temp2_7, $scope.stats.STATS[1].temp2_8);
+                });
+            } else if ($scope.device.os == "COB") {
+                $http({
+                    method: 'GET',
+                    url: $rootScope.config[0].wsip + $scope.device.ip + ':4028/stats',
+                    headers: {
+                        'Content-Type': 'application/json'
                     }
+                }).then(function (data) {
+                    $scope.stats = data.data;
+                    $scope.th5 = Number($scope.stats.STATS[1]["GHS 5s"] / 1000).toFixed(2);
+                    $scope.thav = Number($scope.stats.STATS[1]["GHS av"] / 1000).toFixed(2);
+                    $scope.temp1 = Math.max($scope.stats.STATS[1].temp6, $scope.stats.STATS[1].temp7, $scope.stats.STATS[1].temp8)
+                    $scope.temp2 = Math.max($scope.stats.STATS[1].temp2_6, $scope.stats.STATS[1].temp2_7, $scope.stats.STATS[1].temp2_8);
                 });
             } else {
                 $scope.develop = "Under Develop!"
