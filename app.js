@@ -120,7 +120,7 @@ angular.module('BOSapiclient', ['ngMaterial', 'ngMessages'])
                 locals: { dataToPass: $scope.miners[index] },
                 controller: devController,
                 templateUrl: 'detail.tmpl.html',
-                parent: angular.element(document.querySelector('#popupContainer')),
+                parent: angular.element(document.body),
                 targetEvent: ev,
                 clickOutsideToClose: false,
                 fullscreen: false,
