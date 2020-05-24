@@ -125,7 +125,7 @@ angular.module('BOSapiclient', ['ngMaterial', 'ngMessages'])
                     method: 'POST',
                     url: $rootScope.config[0].wsip + $scope.device.ip + '/cgi-bin/luci/admin/miner/api_status?luci_username='+ $rootScope.config[0].username +'&luci_password='+ $rootScope.config[0].password,
                     headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
+                        'Content-Type': 'application/json'
                     }
                 }).then(function (data) {
                     $scope.stats = data.data;
