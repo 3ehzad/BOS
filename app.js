@@ -1,6 +1,7 @@
 angular.module('BOSapiclient', ['ngMaterial', 'ngMessages'])
-    .config(['$qProvider', function ($qProvider) {
+    .config(['$httpProvider', '$qProvider', function ($httpProvider, $qProvider) {
         $qProvider.errorOnUnhandledRejections(false);
+        // $httpProvider.defaults.withCredentials = true;
     }])
 
     .run(['$rootScope', '$http', function ($rootScope, $http) {
@@ -70,25 +71,6 @@ angular.module('BOSapiclient', ['ngMaterial', 'ngMessages'])
                 $rootScope.relaystatus = data.data;
             });
         }
-        // get temprature
-        // $scope.tempStatus = function () {
-        //     $scope.temp = [];
-        //     for (var i = 0; i < $scope.miners.length; i++) {
-        //         if ($scope.miners[i].os == "COB") {
-        //             $http({
-        //                 method: 'GET',
-        //                 url: $rootScope.config[0].wsip + $scope.miners[i].ip + ':4028/stats'
-        //             }).then(function (data) {
-        //                 $scope.stats = data.data;
-
-        //             });
-        //         } else {
-        //             $scope.temp.push("No API")
-        //         }
-        //         console.log($scope.temp)
-        //         $scope.temp.push(Math.max($scope.stats.STATS[1].temp2_6, $scope.stats.STATS[1].temp2_7, $scope.stats.STATS[1].temp2_8))
-        //     }
-        // }
         $scope.relayON = function (relay) {
             $http.get($rootScope.config[0].arip + 'RELAYON_' + relay).then(function (response) {
                 $scope.relayresponse = response.data;
@@ -138,12 +120,12 @@ angular.module('BOSapiclient', ['ngMaterial', 'ngMessages'])
             };
 
             //fetch api from device
-            if ($scope.device.os == "BOS+" || $scope.device.os == "BOS") {
+            if ($scope.device.os == "BOS+" || $scope.device.os == "BOS") { 
                 $http({
-                    method: 'GET',
-                    url: $rootScope.config[0].wsip + $scope.device.ip + '/cgi-bin/luci/admin/miner/api_status',
+                    method: 'POST',
+                    url: $rootScope.config[0].wsip + $scope.device.ip + '/cgi-bin/luci/admin/miner/api_status?luci_username='+ $rootScope.config[0].username +'&luci_password='+ $rootScope.config[0].password,
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/x-www-form-urlencoded'
                     }
                 }).then(function (data) {
                     $scope.stats = data.data;

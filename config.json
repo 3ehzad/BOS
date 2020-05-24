@@ -3,7 +3,7 @@
         "wsip": "http://192.168.1.",
         "arip": "http://192.168.1.11/",
         "username": "root",
-        "password": "",
+        "password": "root",
         "ardunio": true
     }
 ]
