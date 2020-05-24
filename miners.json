@@ -2,241 +2,281 @@
     {
         "ip": 101,
         "relay": "01",
-        "alias": "R",
-        "os": "COB"
+        "alias": "Reza",
+        "os": "COB",
+        "position": "R"
     },
     {
         "ip": 102,
         "relay": "02",
-        "alias": "R",
-        "os": "COB"
+        "alias": "Reza",
+        "os": "COB",
+        "position": "R"
     },
     {
         "ip": 103,
         "relay": "03",
-        "alias": "R",
-        "os": "COB"
+        "alias": "Reza",
+        "os": "COB",
+        "position": "R"
     },
     {
         "ip": 104,
         "relay": "04",
-        "alias": "R",
-        "os": "COB"
+        "alias": "Reza",
+        "os": "COB",
+        "position": "R"
     },
     {
         "ip": 105,
         "relay": "05",
-        "alias": "R",
-        "os": "COB"
+        "alias": "Reza",
+        "os": "COB",
+        "position": "S"
     },
     {
         "ip": 106,
         "relay": "06",
-        "alias": "R",
-        "os": "COB"
+        "alias": "Reza",
+        "os": "COB",
+        "position": "S"
     },
     {
         "ip": 107,
         "relay": "07",
-        "alias": "R",
-        "os": "COB"
+        "alias": "Reza",
+        "os": "COB",
+        "position": "S"
     },
     {
         "ip": 108,
         "relay": "08",
-        "alias": "R",
-        "os": "COB"
+        "alias": "Reza",
+        "os": "COB",
+        "position": "S"
     },
     {
         "ip": 109,
         "relay": "09",
-        "alias": "R",
-        "os": "COB"
+        "alias": "Reza",
+        "os": "COB",
+        "position": "T"
     },
     {
         "ip": 136,
         "relay": "36",
-        "alias": "R",
-        "os": "ANT"
+        "alias": "Reza",
+        "os": "ANT",
+        "position": "T"
     },
     {
         "ip": 110,
         "relay": "12",
-        "alias": "B",
-        "os": "COB"
+        "alias": "Behzad",
+        "os": "COB",
+        "position": "T"
     },
     {
         "ip": 111,
         "relay": "11",
-        "alias": "B",
-        "os": "COB"
+        "alias": "Behzad",
+        "os": "COB",
+        "position": "T"
     },
     {
         "ip": 112,
         "relay": "10",
-        "alias": "B",
-        "os": "COB"
+        "alias": "Behzad",
+        "os": "COB",
+        "position": "T"
     },
     {
         "ip": 121,
         "relay": "21",
-        "alias": "B",
-        "os": "BOS+"
+        "alias": "Behzad",
+        "os": "BOS+",
+        "position": "T"
     },
     {
         "ip": 122,
         "relay": "22",
-        "alias": "B",
-        "os": "BOS+"
+        "alias": "Behzad",
+        "os": "BOS+",
+        "position": "T"
     },
     {
         "ip": 140,
         "relay": "19",
-        "alias": "B",
-        "os": "COB"
+        "alias": "Behzad",
+        "os": "COB",
+        "position": "S"
     },
     {
         "ip": 141,
         "relay": "20",
-        "alias": "B",
-        "os": "BOS+"
+        "alias": "Behzad",
+        "os": "BOS+",
+        "position": "S"
     },
     {
         "ip": 132,
         "relay": "40",
         "alias": "BV",
-        "os": "COB"
+        "os": "COB",
+        "position": "T"
     },
     {
         "ip": 113,
         "relay": "13",
-        "alias": "V",
-        "os": "COB"
+        "alias": "Vahid",
+        "os": "COB",
+        "position": "R"
     },
     {
         "ip": 114,
         "relay": "14",
-        "alias": "V",
-        "os": "COB"
+        "alias": "Vahid",
+        "os": "COB",
+        "position": "R"
     },
     {
         "ip": 115,
         "relay": "15",
-        "alias": "V",
-        "os": "COB"
+        "alias": "Vahid",
+        "os": "COB",
+        "position": "R"
     },
     {
         "ip": 116,
         "relay": "16",
-        "alias": "V",
-        "os": "COB"
+        "alias": "Vahid",
+        "os": "COB",
+        "position": "R"
     },
     {
         "ip": 125,
         "relay": "17",
-        "alias": "V",
-        "os": "COB"
+        "alias": "Vahid",
+        "os": "COB",
+        "position": "S"
     },
     {
         "ip": 126,
         "relay": "18",
-        "alias": "V",
-        "os": "COB"
+        "alias": "Vahid",
+        "os": "COB",
+        "position": "S"
     },
     {
         "ip": 129,
         "relay": "25",
-        "alias": "H",
-        "os": "AVL"
+        "alias": "Hamid",
+        "os": "AVL",
+        "position": "R"
     },
     {
         "ip": 129,
         "relay": "26",
-        "alias": "H",
-        "os": "AVL"
+        "alias": "Hamid",
+        "os": "AVL",
+        "position": "R"
     },
     {
         "ip": 129,
         "relay": "27",
-        "alias": "H",
-        "os": "AVL"
+        "alias": "Hamid",
+        "os": "AVL",
+        "position": "R"
     },
     {
         "ip": 129,
         "relay": "28",
-        "alias": "H",
-        "os": "AVL"
+        "alias": "Hamid",
+        "os": "AVL",
+        "position": "R"
     },
     {
         "ip": 129,
         "relay": "29",
-        "alias": "H",
-        "os": "AVL"
+        "alias": "Hamid",
+        "os": "AVL",
+        "position": "S"
     },
     {
         "ip": 130,
         "relay": "30",
-        "alias": "H",
-        "os": "COB"
+        "alias": "Hamid",
+        "os": "COB",
+        "position": "S"
     },
     {
         "ip": 131,
         "relay": "31",
-        "alias": "H",
-        "os": "COB"
+        "alias": "Hamid",
+        "os": "COB",
+        "position": "S"
     },
     {
         "ip": 133,
         "relay": "34",
-        "alias": "H",
-        "os": "ANT"
+        "alias": "Hamid",
+        "os": "ANT",
+        "position": "T"
     },
     {
         "ip": 134,
         "relay": "33",
-        "alias": "H",
-        "os": "ANT"
+        "alias": "Hamid",
+        "os": "ANT",
+        "position": "T"
     },
     {
         "ip": 123,
         "relay": "23",
-        "alias": "A",
-        "os": "COB"
+        "alias": "Amir",
+        "os": "COB",
+        "position": "T"
     },
     {
         "ip": 124,
         "relay": "24",
-        "alias": "A",
-        "os": "COB"
+        "alias": "Amir",
+        "os": "COB",
+        "position": "T"
     },
     {
         "ip": 117,
         "relay": "32",
-        "alias": "A",
-        "os": "ANT"
+        "alias": "Amir",
+        "os": "ANT",
+        "position": "T"
     },
     {
         "ip": 143,
         "relay": "Empty",
-        "alias": "A",
-        "os": "COB"
+        "alias": "Amir",
+        "os": "COB",
+        "position": "S"
     },
     {
         "ip": 142,
         "relay": "41",
-        "alias": "A",
-        "os": "COB"
+        "alias": "Amir",
+        "os": "COB",
+        "position": "S"
     },
     {
         "ip": 144,
         "relay": "47",
-        "alias": "A",
-        "os": "COB"
+        "alias": "Amir",
+        "os": "COB",
+        "position": "S"
     },
     {
         "ip": 135,
         "relay": "35",
-        "alias": "Z",
-        "os": "ANT"
+        "alias": "Azmian",
+        "os": "ANT",
+        "position": "T"
     }
 ]

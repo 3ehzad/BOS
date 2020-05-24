@@ -37,11 +37,11 @@ angular.module('BOSapiclient', ['ngMaterial', 'ngMessages'])
                 $scope.psuresponse = response.data;
             });
         }
-        // $scope.modemRESET = function () {
-        //     $http.get($rootScope.espip + 'MODEMRESET').then(function (response) {
-        //         $scope.modemresponse = response.data;
-        //     });
-        // }
+        $scope.modemRESET = function () {
+            $http.get($rootScope.config[0].arip + 'MODEMRESET').then(function (response) {
+                $scope.modemresponse = response.data;
+            });
+        }
         // $scope.camOFF = function () {
         //     $http.get($rootScope.espip + 'CAMOFF').then(function (response) {
         //         $scope.camresponse = response.data;
@@ -59,6 +59,10 @@ angular.module('BOSapiclient', ['ngMaterial', 'ngMessages'])
         $http.get('miners.json?_=' + Date.now(), { cache: false }).then(function (data) {
             $scope.miners = data.data;
             $scope.isLoading = false;
+            var str = JSON.stringify($scope.miners)
+            $rootScope.rCount = (str.match(/\"R\"/g) || []).length;
+            $rootScope.sCount = (str.match(/\"S\"/g) || []).length;
+            $rootScope.tCount = (str.match(/\"T\"/g) || []).length;
         });
         //get relay status of per device
         $scope.relayStatus = function () {

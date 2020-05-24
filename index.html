@@ -43,12 +43,13 @@
                             <md-icon class="off" ng-if="minerstatus.psu =='OFF'">offline_bolt</md-icon>
                      Status / <span class="md-body-1"> IN: {{minerstatus.temp_in}} &#176</span>
                         <span class="md-body-1">OUT: {{minerstatus.temp_out}} &#176</span>
+                        / <span class="md-body-1"> R: {{rCount}}, S: {{sCount}}, T: {{tCount}} </span>
                     </div>
                 </md-card-title-text>
             </md-card-title>
             <md-card-content layout="column">
                 <md-card-actions layout="row" layout-align="start center">
-                    <md-button class="md-raised md-primary" ng-click="psuStatus()">
+                    <md-button class="md-raised md-primary" ng-click="psuStatus()" ng-if="!Emergency">
                         <md-icon>network_check</md-icon> Check
                     </md-button>
                     <md-button class="md-raised md-success" ng-click="psuRUN()" ng-if="!Emergency">
@@ -60,10 +61,13 @@
                         <md-icon>power_settings_new</md-icon> STOP
                     </md-button>
                     <md-button class="md-raised md-warn" ng-click="psuALLON()" ng-if="Emergency">
-                        <md-icon>offline_bolt</md-icon> ALL ON!
+                        <md-icon>offline_bolt</md-icon> All ON
                     </md-button>
                     <md-button class="md-raised md-warn" ng-click="psuALLOFF()" ng-if="Emergency">
-                        <md-icon>offline_bolt</md-icon> ALL OFF!
+                        <md-icon>offline_bolt</md-icon> All OFF
+                    </md-button>
+                    <md-button class="md-raised md-accent" ng-click="modemRESET()" ng-if="Emergency">
+                        <md-icon>signal_cellular_connected_no_internet_4_bar</md-icon> Modem Reset
                     </md-button>
                 </md-card-actions>
             </md-card-content>
