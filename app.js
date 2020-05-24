@@ -122,7 +122,7 @@ angular.module('BOSapiclient', ['ngMaterial', 'ngMessages'])
             //fetch api from device
             if ($scope.device.os == "BOS+" || $scope.device.os == "BOS") { 
                 $http({
-                    method: 'POST',
+                    method: 'GET',
                     url: $rootScope.config[0].wsip + $scope.device.ip + '/cgi-bin/luci/admin/miner/api_status?luci_username='+ $rootScope.config[0].username +'&luci_password='+ $rootScope.config[0].password,
                     headers: {
                         'Content-Type': 'application/json'
