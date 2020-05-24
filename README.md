@@ -1,4 +1,4 @@
-# BOS
+# BOS Monitor
 Braiins OS/OS+ API Client
 
 
