@@ -3,14 +3,14 @@
         "ip": 101,
         "relay": "01",
         "alias": "Reza",
-        "os": "COB",
+        "os": "BOS+",
         "position": "R"
     },
     {
         "ip": 102,
         "relay": "02",
         "alias": "Reza",
-        "os": "COB",
+        "os": "BOS+",
         "position": "R"
     },
     {
