@@ -108,7 +108,7 @@ angular.module('BOSapiclient', ['ngMaterial', 'ngMessages'])
                 templateUrl: 'detail.tmpl.html',
                 parent: angular.element(document.body),
                 targetEvent: ev,
-                clickOutsideToClose: false,
+                clickOutsideToClose: true,
                 fullscreen: false,
                 preserveScope: true
             })
